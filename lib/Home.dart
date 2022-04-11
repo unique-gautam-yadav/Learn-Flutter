@@ -1,4 +1,6 @@
 // ignore: file_names
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
 
 class Home extends StatelessWidget {
@@ -6,18 +8,18 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var name = "Gautam Yadav";
+
     return Scaffold(
       appBar: AppBar(
-        title: Text("Gautam Yadav"),
+        title: Text(name),
       ),
       body: Center(
         child: Container(
           child: Text("Welcome To My Application"),
         ),
       ),
-      drawer: Drawer(
-        child: ,
-      ),
+      drawer: Drawer(),
     );
   }
 }
