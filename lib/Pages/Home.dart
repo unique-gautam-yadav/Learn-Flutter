@@ -8,15 +8,18 @@ class Home extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    var name = "Gautam Yadav";
+    var title = "Home Page";
 
     return Scaffold(
       appBar: AppBar(
-        title: Text(name),
+        title: Text(title),
       ),
       body: Center(
         child: Container(
-          child: Text("Welcome To My Application"),
+          child: Text(
+            "Welcome To My Application",
+            style: TextStyle(fontWeight: FontWeight.bold),
+          ),
         ),
       ),
       drawer: Drawer(),
