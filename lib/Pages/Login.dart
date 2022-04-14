@@ -9,42 +9,54 @@ class Login extends StatelessWidget {
   Widget build(BuildContext context) {
     return Material(
       color: Colors.white,
-      child: Column(
-        children: [
-          SizedBox(height: 30),
-          Image.asset(
-            "assets/images/user.png",
-            fit: BoxFit.cover,
-            height: 250,
-          ),
-          SizedBox(
-            height: 20,
-          ),
-          Text(
-            "Welcome",
-            style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
-          ),
-          SizedBox(
-            height: 25,
-          ),
-          Padding(
-            padding: EdgeInsets.fromLTRB(25, 16, 25, 16),
-            child: Column(children: [
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: "User Name",
-                    hintText: "Enter Your Username Here"),
+      child: SingleChildScrollView(
+        child: Column(
+          children: [
+            SizedBox(height: 30),
+            Image.asset(
+              "assets/images/user.png",
+              fit: BoxFit.cover,
+              height: 250,
+            ),
+            SizedBox(
+              height: 20,
+            ),
+            Text(
+              "Welcome",
+              style: TextStyle(fontSize: 40, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(
+              height: 25,
+            ),
+            Padding(
+                padding: EdgeInsets.fromLTRB(25, 16, 25, 16),
+                child: Column(children: [
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: "User Name",
+                        hintText: "Enter Your Username Here"),
+                  ),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  TextFormField(
+                    decoration: InputDecoration(
+                        labelText: "Password", hintText: "Enter Your Password"),
+                  )
+                ])),
+            ElevatedButton(
+              child: Text(
+                "Login",
+                style: TextStyle(fontSize: 20),
               ),
-              SizedBox(
-                height: 10,
-              ),
-              TextFormField(
-                decoration: InputDecoration(
-                    labelText: "Password", hintText: "Enter Your Password"),
-              )
-            ]),
-          )
-        ],
+              style: TextButton.styleFrom(
+                  padding: EdgeInsets.fromLTRB(40, 15.5, 40, 15.5)),
+              onPressed: () {
+                print("Button Pressed");
+              },
+            )
+          ],
+        ),
       ),
     );
   }
