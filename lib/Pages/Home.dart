@@ -15,11 +15,9 @@ class Home extends StatelessWidget {
         title: Text(title),
       ),
       body: Center(
-        child: Container(
-          child: Text(
-            "Welcome To My Application",
-            style: TextStyle(fontWeight: FontWeight.bold),
-          ),
+        child: Text(
+          "Welcome To My Application",
+          style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
       drawer: Drawer(),

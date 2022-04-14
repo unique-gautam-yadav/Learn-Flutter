@@ -12,8 +12,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      themeMode: ThemeMode.dark,
+      themeMode: ThemeMode.light,
       darkTheme: ThemeData(brightness: Brightness.dark),
+      theme: ThemeData(
+          brightness: Brightness.light, primaryColor: Colors.deepPurpleAccent),
       initialRoute: "/login",
       routes: {"/": (context) => Home(), "/login": (context) => Login()},
     );
