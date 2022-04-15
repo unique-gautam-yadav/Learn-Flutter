@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/material.dart';
 
 class Login extends StatelessWidget {
@@ -40,6 +41,7 @@ class Login extends StatelessWidget {
                     height: 10,
                   ),
                   TextFormField(
+                    obscureText: true,
                     decoration: InputDecoration(
                         labelText: "Password", hintText: "Enter Your Password"),
                   )
@@ -52,7 +54,7 @@ class Login extends StatelessWidget {
               style: TextButton.styleFrom(
                   padding: EdgeInsets.fromLTRB(40, 15.5, 40, 15.5)),
               onPressed: () {
-                print("Button Pressed");
+                Navigator.pushNamed(context, MyRoutes.HomeRoute);
               },
             )
           ],
