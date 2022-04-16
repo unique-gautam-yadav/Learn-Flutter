@@ -20,7 +20,23 @@ class Home extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      drawer: Drawer(),
+      drawer: Drawer(
+        backgroundColor: Colors.blue[50],
+        child: Center(
+          child: InkWell(
+            onTap: () {
+              Navigator.pop(context);
+              Navigator.pop(context);
+            },
+            child: Container(
+              height: 40,
+              color: Colors.blue[200],
+              alignment: Alignment.center,
+              child: Text("Log Out"),
+            ),
+          ),
+        ),
+      ),
     );
   }
 }
