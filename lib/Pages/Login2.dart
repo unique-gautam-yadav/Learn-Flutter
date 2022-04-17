@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 
 import '../utils/MyRoutes.dart';
@@ -12,6 +14,7 @@ class Login2 extends StatefulWidget {
 class _Login2State extends State<Login2> {
   String _name = "";
   bool _pressedbutton = false;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -62,38 +65,39 @@ class _Login2State extends State<Login2> {
                           hintText: "Enter Your Password"),
                     )
                   ])),
-              InkWell(
-                onTap: () async {
-                  setState(() {
-                    _pressedbutton = true;
-                  });
-                  await Future.delayed(const Duration(milliseconds: 800));
-                  Navigator.pushNamed(context, MyRoutes.HomeRoute);
-                  await Future.delayed(const Duration(milliseconds: 300));
-                  setState(() {
-                    _pressedbutton = false;
-                  });
-                },
-                child: AnimatedContainer(
-                  duration: const Duration(milliseconds: 750),
-                  height: _pressedbutton ? 60 : 60,
-                  width: _pressedbutton ? 60 : 150,
-                  alignment: Alignment.center,
-                  child: _pressedbutton
-                      ? const Icon(
-                          Icons.done,
-                          color: Colors.white,
-                          size: 50,
-                        )
-                      : const Text(
-                          "Login",
-                          style: TextStyle(
-                              fontWeight: FontWeight.bold, fontSize: 18),
-                        ),
-                  decoration: BoxDecoration(
-                      color: Colors.lightBlueAccent,
-                      borderRadius:
-                          BorderRadius.circular(_pressedbutton ? 60 : 8)),
+              Material(
+                color: Colors.lightBlueAccent,
+                borderRadius: BorderRadius.circular(_pressedbutton ? 60 : 8),
+                child: InkWell(
+                  // splashColor: Colors.green,
+                  onTap: () async {
+                    setState(() {
+                      _pressedbutton = true;
+                    });
+                    await Future.delayed(const Duration(milliseconds: 800));
+                    Navigator.pushNamed(context, MyRoutes.HomeRoute);
+                    await Future.delayed(const Duration(milliseconds: 300));
+                    setState(() {
+                      _pressedbutton = false;
+                    });
+                  },
+                  child: AnimatedContainer(
+                    duration: const Duration(milliseconds: 750),
+                    height: _pressedbutton ? 60 : 60,
+                    width: _pressedbutton ? 60 : 150,
+                    alignment: Alignment.center,
+                    child: _pressedbutton
+                        ? const Icon(
+                            Icons.done,
+                            color: Colors.white,
+                            size: 50,
+                          )
+                        : const Text(
+                            "Login",
+                            style: TextStyle(
+                                fontWeight: FontWeight.bold, fontSize: 18),
+                          ),
+                  ),
                 ),
               ),
             ],

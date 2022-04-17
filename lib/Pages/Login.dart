@@ -17,7 +17,7 @@ class Login extends StatelessWidget {
             Image.asset(
               "assets/images/user.png",
               fit: BoxFit.cover,
-              height: 250,
+              height: 250, 
             ),
             SizedBox(
               height: 20,

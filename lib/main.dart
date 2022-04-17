@@ -21,9 +21,9 @@ class App extends StatelessWidget {
       //     brightness: Brightness.light, primaryColor: Colors.deepPurpleAccent),
       initialRoute: "/login2",
       routes: {
-        MyRoutes.HomeRoute: (context) => Home(),
-        MyRoutes.LoginRoute: (context) => Login(),
-        MyRoutes.Login2Route: (context) => Login2()
+        MyRoutes.HomeRoute: (context) => const Home(),
+        MyRoutes.LoginRoute: (context) => const Login(),
+        MyRoutes.Login2Route: (context) => const Login2()
       },
     );
   }
