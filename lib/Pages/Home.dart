@@ -3,6 +3,8 @@
 
 import 'package:flutter/material.dart';
 
+import '../Widgets/AppDrawer.dart';
+
 class Home extends StatelessWidget {
   const Home({Key? key}) : super(key: key);
 
@@ -20,23 +22,7 @@ class Home extends StatelessWidget {
           style: TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      drawer: Drawer(
-        backgroundColor: Colors.blue[50],
-        child: Center(
-          child: InkWell(
-            onTap: () {
-              Navigator.pop(context);
-              Navigator.pop(context);
-            },
-            child: Container(
-              height: 40,
-              color: Colors.blue[200],
-              alignment: Alignment.center,
-              child: Text("Log Out"),
-            ),
-          ),
-        ),
-      ),
+      drawer: AppDrawer(),
     );
   }
 }

@@ -54,7 +54,7 @@ class Login extends StatelessWidget {
               style: TextButton.styleFrom(
                   padding: EdgeInsets.fromLTRB(40, 15.5, 40, 15.5)),
               onPressed: () {
-                Navigator.pushNamed(context, MyRoutes.HomeRoute);
+                Navigator.pushNamed(context, MyRoutes.homeRoute);
               },
             )
           ],
