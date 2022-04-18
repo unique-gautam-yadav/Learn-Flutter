@@ -20,6 +20,7 @@ class _Login2State extends State<Login2> {
         _pressedbutton = true;
       });
       await Future.delayed(const Duration(milliseconds: 800));
+      Navigator.pop(context);
       Navigator.pushNamed(context, MyRoutes.homeRoute);
       await Future.delayed(const Duration(milliseconds: 300));
       setState(() {
@@ -92,7 +93,7 @@ class _Login2State extends State<Login2> {
                     height: 20,
                   ),
                   Material(
-                    color: Colors.lightBlueAccent,
+                    color: Colors.deepPurple,
                     borderRadius:
                         BorderRadius.circular(_pressedbutton ? 60 : 8),
                     child: InkWell(

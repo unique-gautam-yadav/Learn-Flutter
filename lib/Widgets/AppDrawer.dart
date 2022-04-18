@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_literals_to_create_immutables
 
+import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
@@ -9,7 +10,7 @@ class AppDrawer extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Drawer(
-      backgroundColor: Colors.blue[100],
+      backgroundColor: Colors.deepPurple[100],
       child: ListView(
         children: [
           const DrawerHeader(
@@ -20,20 +21,37 @@ class AppDrawer extends StatelessWidget {
                 currentAccountPicture: CircleAvatar(
                     backgroundImage: AssetImage("assets/images/Profile.jpg")),
               )),
-          const ListTile(
-            leading: Icon(CupertinoIcons.home),
-            title: Text(
-              "Home",
-              style: TextStyle(fontSize: 15),
-            ),
+          ListTile(
+            onTap: () {
+              Navigator.pop(context);
+            },
+            leading: const Icon(CupertinoIcons.home),
+            title: const Text("Home"),
           ),
-          const ListTile(
-            leading: Icon(CupertinoIcons.profile_circled),
-            title: Text("Your Profile"),
+          ListTile(
+            leading: const Icon(CupertinoIcons.profile_circled),
+            title: const Text("Your Profile"),
+            onTap: () {
+              Navigator.pushNamed(context, MyRoutes.profileRoute);
+            },
           ),
-          const ListTile(
-            leading: Icon(CupertinoIcons.mail),
-            title: Text("Mail Me"),
+          ListTile(
+            leading: const Icon(CupertinoIcons.mail),
+            title: const Text("Mail Me"),
+            onTap: () {
+              // do nothing
+            },
+          ),
+          const Divider(),
+          // const Spacer(),
+          ListTile(
+            onTap: (() {
+              Navigator.pop(context);
+              Navigator.pop(context);
+              Navigator.pushNamed(context, MyRoutes.login2Route);
+            }),
+            leading: const Icon(CupertinoIcons.power),
+            title: const Text("Log Out"),
           )
         ],
       ),
