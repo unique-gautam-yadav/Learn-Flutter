@@ -1,4 +1,5 @@
 import 'package:first_app/Pages/Home.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:first_app/Pages/Login.dart';
 import 'package:first_app/Pages/Profile.dart';
 import 'Pages/Login2.dart';
@@ -18,12 +19,21 @@ class App extends StatelessWidget {
       theme: ThemeData(
           primaryColor: Colors.deepPurple,
           brightness: Brightness.light,
-          primarySwatch: Colors.deepPurple),
+          fontFamily: GoogleFonts.lato().fontFamily,
+          primarySwatch: Colors.deepPurple,
+          appBarTheme: const AppBarTheme(
+              backgroundColor: Colors.white,
+              elevation: 0.5,
+              titleTextStyle: TextStyle(
+                color: Colors.black,
+                fontSize: 20,
+              ),
+              iconTheme: IconThemeData(color: Colors.black))),
       debugShowCheckedModeBanner: false,
       initialRoute: MyRoutes.login2Route,
       // initialRoute: MyRoutes.homeRoute,
       routes: {
-        MyRoutes.homeRoute: (context) => const Home(),
+        MyRoutes.homeRoute: (context) => Home(),
         MyRoutes.loginRoute: (context) => const Login(),
         MyRoutes.login2Route: (context) => const Login2(),
         MyRoutes.profileRoute: (context) => const MyProfile()
