@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'dart:convert';
+
 class Item {
-  final String id;
+  final int id;
   final String name;
   final String desc;
   final num price;
@@ -16,13 +19,14 @@ class Item {
 }
 
 class CatalogModel {
-  static final items = [
+  static final item = [
     Item(
-        id: "001",
-        name: "IPhone 13",
-        desc: "IPhone generation 13th",
+        id: 1,
+        name: "iPhone 12 Pro",
+        desc: "Apple iPhone 12th generation",
         price: 999,
-        color: "#5e6ab8",
-        image: "https://fdn2.gsmarena.com/vv/pics/apple/apple-iphone-13-01.jpg")
+        color: "#33505a",
+        image:
+            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRISJ6msIu4AU9_M9ZnJVQVFmfuhfyJjEtbUm3ZK11_8IV9TV25-1uM5wHjiFNwKy99w0mR5Hk&usqp=CAc")
   ];
 }
