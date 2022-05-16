@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: prefer_const_constructors, unused_local_variable
+// ignore_for_file: prefer_const_constructors, unused_local_variable, unnecessary_null_comparison
 
 import 'dart:convert';
 
@@ -45,11 +45,37 @@ class _HomeState extends State<Home> {
       body: Padding(
           padding: const EdgeInsets.all(16.0),
           child: CatalogModel.item != null && CatalogModel.item.isNotEmpty
-              ? ListView.builder(
+              ? GridView.builder(
                   itemCount: CatalogModel.item.length,
+                  gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                      crossAxisCount: 2,
+                      crossAxisSpacing: 15,
+                      mainAxisSpacing: 15),
                   itemBuilder: (context, index) {
-                    return Item_Wid(
-                      item: CatalogModel.item[index],
+                    final item = CatalogModel.item[index];
+                    return Card(
+                      clipBehavior: Clip.antiAlias,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(15)),
+                      child: GridTile(
+                        child: Image.network(item.image),
+                        header: Container(
+                          padding: EdgeInsets.all(12),
+                          child: Text(
+                            item.name,
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          decoration: BoxDecoration(color: Colors.deepPurple),
+                        ),
+                        footer: Container(
+                          padding: EdgeInsets.all(12),
+                          child: Text(
+                            "\$${item.price.toString()}",
+                            style: TextStyle(color: Colors.white),
+                          ),
+                          decoration: BoxDecoration(color: Colors.black),
+                        ),
+                      ),
                     );
                   })
               : Center(

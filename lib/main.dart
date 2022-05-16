@@ -30,8 +30,8 @@ class App extends StatelessWidget {
               ),
               iconTheme: IconThemeData(color: Colors.black))),
       debugShowCheckedModeBanner: false,
-      initialRoute: MyRoutes.login2Route,
-      // initialRoute: MyRoutes.homeRoute,
+      // initialRoute: MyRoutes.login2Route,
+      initialRoute: MyRoutes.homeRoute,
       routes: {
         MyRoutes.homeRoute: (context) => const Home(),
         MyRoutes.loginRoute: (context) => const Login(),
