@@ -1,5 +1,5 @@
 // ignore: file_names
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: prefer_const_constructors, unused_local_variable
 
 import 'dart:convert';
 
@@ -25,29 +25,36 @@ class _HomeState extends State<Home> {
   }
 
   load() async {
+    await Future.delayed(Duration(seconds: 3));
     final data = await rootBundle.loadString("assets/files/catalog.json");
     final data1 = jsonDecode(data);
     final data2 = data1["products"];
+    CatalogModel.item =
+        List.from(data2).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
     var title = "Home Page";
-    final dummyList = List.generate(4, (index) => CatalogModel.item[0]);
+    // final dummyList = List.generate(4, (index) => CatalogModel.item[0]);
     return Scaffold(
       appBar: AppBar(
         title: Text(title),
       ),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: ListView.builder(
-            itemCount: dummyList.length,
-            itemBuilder: (context, index) {
-              return Item_Wid(
-                item: dummyList[index],
-              );
-            }),
-      ),
+          padding: const EdgeInsets.all(16.0),
+          child: CatalogModel.item != null && CatalogModel.item.isNotEmpty
+              ? ListView.builder(
+                  itemCount: CatalogModel.item.length,
+                  itemBuilder: (context, index) {
+                    return Item_Wid(
+                      item: CatalogModel.item[index],
+                    );
+                  })
+              : Center(
+                  child: CircularProgressIndicator(),
+                )),
       drawer: AppDrawer(),
     );
   }
