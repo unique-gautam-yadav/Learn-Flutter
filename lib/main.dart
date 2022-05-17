@@ -1,5 +1,5 @@
 import 'package:first_app/Pages/Home.dart';
-import 'package:google_fonts/google_fonts.dart';
+import 'package:first_app/utils/themes.dart';
 import 'package:first_app/Pages/Login.dart';
 import 'package:first_app/Pages/Profile.dart';
 import 'Pages/Login2.dart';
@@ -16,19 +16,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: ThemeData(
-          primaryColor: Colors.deepPurple,
-          brightness: Brightness.light,
-          fontFamily: GoogleFonts.lato().fontFamily,
-          primarySwatch: Colors.deepPurple,
-          appBarTheme: const AppBarTheme(
-              backgroundColor: Colors.white,
-              elevation: 0.5,
-              titleTextStyle: TextStyle(
-                color: Colors.black,
-                fontSize: 20,
-              ),
-              iconTheme: IconThemeData(color: Colors.black))),
+      theme: Themes.lightTheme(context),
       debugShowCheckedModeBanner: false,
       // initialRoute: MyRoutes.login2Route,
       initialRoute: MyRoutes.homeRoute,
