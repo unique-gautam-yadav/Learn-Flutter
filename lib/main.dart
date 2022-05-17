@@ -1,7 +1,7 @@
 import 'package:first_app/Pages/Home.dart';
-import 'package:first_app/utils/themes.dart';
 import 'package:first_app/Pages/Login.dart';
 import 'package:first_app/Pages/Profile.dart';
+import 'package:first_app/utils/MyThemes.dart';
 import 'Pages/Login2.dart';
 import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/material.dart';
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: Themes.lightTheme(context),
+      theme: MyThemes.lightTheme(context),
       debugShowCheckedModeBanner: false,
       // initialRoute: MyRoutes.login2Route,
       initialRoute: MyRoutes.homeRoute,

@@ -51,7 +51,7 @@ class _HomeState extends State<Home> {
                 if (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
                   CatalogList().expand()
                 else
-                  CircularProgressIndicator(),
+                  CircularProgressIndicator().centered().expand()
               ],
             ),
           ),
@@ -115,7 +115,9 @@ class CatalogItem extends StatelessWidget {
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
                 ElevatedButton(
-                  onPressed: () {},
+                  onPressed: () {
+                    print("${catalog.name} Pressed !!");
+                  },
                   child: "Buy".text.make(),
                   style: ButtonStyle(
                       backgroundColor:
