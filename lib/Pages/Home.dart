@@ -1,9 +1,10 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+// ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 // ignore: file_names
 // ignore_for_file: prefer_const_constructors, unused_local_variable, unnecessary_null_comparison
 
 import 'dart:convert';
 
+import 'package:first_app/Pages/ItemDetail.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -42,6 +43,7 @@ class _HomeState extends State<Home> {
     return Scaffold(
         backgroundColor: MyThemes.creamColor,
         body: SafeArea(
+          bottom: false,
           child: Container(
             padding: Vx.m32,
             child: Column(
@@ -49,7 +51,9 @@ class _HomeState extends State<Home> {
               children: [
                 CatalogHeader(),
                 if (CatalogModel.item != null && CatalogModel.item.isNotEmpty)
-                  CatalogList().expand()
+                  CatalogList()
+                      .pOnly(top: 20, bottom: 0, left: 0, right: 0)
+                      .expand()
                 else
                   CircularProgressIndicator().centered().expand()
               ],
@@ -84,7 +88,13 @@ class CatalogList extends StatelessWidget {
       itemCount: CatalogModel.item.length,
       itemBuilder: (context, index) {
         final catalog = CatalogModel.item[index];
-        return CatalogItem(catalog: catalog);
+        return InkWell(
+          onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: ((context) => ItemDetail(catalog: catalog)))),
+          child: CatalogItem(catalog: catalog),
+        );
       },
     );
   }
@@ -100,7 +110,10 @@ class CatalogItem extends StatelessWidget {
     return VxBox(
         child: Row(
       children: [
-        CatalogItemImage(img: catalog.image),
+        Hero(
+          tag: Key(catalog.id.toString()),
+          child: CatalogItemImage(img: catalog.image),
+        ),
         Expanded(
             child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
