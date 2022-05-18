@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -7,14 +9,15 @@ class MyThemes {
       brightness: Brightness.light,
       fontFamily: GoogleFonts.poppins().fontFamily,
       primarySwatch: Colors.deepPurple,
-      appBarTheme: const AppBarTheme(
-          backgroundColor: Colors.white,
-          elevation: 0.5,
-          titleTextStyle: TextStyle(
+      appBarTheme: AppBarTheme(
+          backgroundColor: MyThemes.creamColor,
+          centerTitle: true,
+          elevation: 0,
+          titleTextStyle: const TextStyle(
             color: Colors.black,
             fontSize: 20,
           ),
-          iconTheme: IconThemeData(color: Colors.black)));
+          iconTheme: const IconThemeData(color: Colors.black)));
   static ThemeData darkTheme(BuildContext context) =>
       ThemeData(brightness: Brightness.dark);
   //Colors

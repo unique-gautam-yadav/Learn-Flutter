@@ -5,6 +5,8 @@
 import 'dart:convert';
 
 import 'package:first_app/Pages/ItemDetail.dart';
+import 'package:first_app/utils/MyRoutes.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -42,6 +44,11 @@ class _HomeState extends State<Home> {
     // final dummyList = List.generate(4, (index) => CatalogModel.item[0]);
     return Scaffold(
         backgroundColor: MyThemes.creamColor,
+        floatingActionButton: FloatingActionButton(
+          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
+          child: Icon(CupertinoIcons.cart),
+          backgroundColor: MyThemes.darkBlueishColor,
+        ),
         body: SafeArea(
           bottom: false,
           child: Container(
@@ -131,7 +138,7 @@ class CatalogItem extends StatelessWidget {
                   onPressed: () {
                     print("${catalog.name} Pressed !!");
                   },
-                  child: "Buy".text.make(),
+                  child: "Add to cart".text.make(),
                   style: ButtonStyle(
                       backgroundColor:
                           MaterialStateProperty.all(MyThemes.darkBlueishColor),

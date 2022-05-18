@@ -11,8 +11,7 @@ class ItemDetail extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
+        backgroundColor: Colors.transparent,
         title: Text(catalog.name),
       ),
       bottomNavigationBar: Container(
@@ -26,22 +25,22 @@ class ItemDetail extends StatelessWidget {
               onPressed: () {
                 print("${catalog.name} Pressed !!");
               },
-              child: "Buy".text.xl2.bold.make(),
+              child: "Add to cart".text.xl2.bold.make(),
               style: ButtonStyle(
                   backgroundColor:
                       MaterialStateProperty.all(MyThemes.darkBlueishColor),
                   shape: MaterialStateProperty.all(const StadiumBorder())),
-            ).h4(context).w32(context)
+            ).h4(context).w40(context)
           ],
-        ).p32(),
+        ).px32().py8(),
       ),
-      body: Column(
-        children: [
-          Hero(
-              tag: Key(catalog.id.toString()),
-              child: Image.network(catalog.image).h40(context).w64(context)),
-          Expanded(
-            child: VxArc(
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            Hero(
+                tag: Key(catalog.id.toString()),
+                child: Image.network(catalog.image).h40(context).w64(context)),
+            VxArc(
               arcType: VxArcType.CONVEY,
               edge: VxEdge.TOP,
               height: 25,
@@ -55,12 +54,17 @@ class ItemDetail extends StatelessWidget {
                         .bold
                         .make(),
                     catalog.desc.text.xl.gray500.make(),
+                    "Erat justo amet dolor vero clita lorem, aliquyam et eirmod kasd sit. Amet diam diam voluptua rebum diam rebum sea aliquyam ipsum, labore ipsum dolores ea ut ipsum tempor kasd. Kasd et aliquyam eirmod et ipsum vero nonumy sed et, sanctus sadipscing amet duo et sea sit gubergren. Nonumy dolor sed ipsum gubergren dolor ea. Ut et rebum ea eirmod consetetur, lorem sit takimata diam takimata lorem at sit no. Rebum accusam accusam amet ut ut elitr justo dolore sea. At sanctus sed et consetetur erat eirmod diam ut rebum. Ipsum dolores nonumy kasd diam. Sit voluptua diam eos et."
+                        .text
+                        .gray500
+                        .make()
+                        .px12()
                   ],
                 ).py64(),
               ),
-            ),
-          )
-        ],
+            )
+          ],
+        ),
       ),
     );
   }
