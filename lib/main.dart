@@ -17,7 +17,10 @@ class App extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      theme: MyThemes.lightTheme(context),
+      themeMode: ThemeMode.system,
+      theme: MyThemes.darkTheme(context),
+      // theme: MyThemes.lightTheme(context),
+      darkTheme: MyThemes.darkTheme(context),
       debugShowCheckedModeBanner: false,
       // initialRoute: MyRoutes.login2Route,
       initialRoute: MyRoutes.homeRoute,

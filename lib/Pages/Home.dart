@@ -12,7 +12,6 @@ import 'package:flutter/services.dart';
 import 'package:velocity_x/velocity_x.dart';
 
 import 'package:first_app/models/CatalogModel.dart';
-import 'package:first_app/utils/MyThemes.dart';
 
 class Home extends StatefulWidget {
   const Home({Key? key}) : super(key: key);
@@ -43,11 +42,11 @@ class _HomeState extends State<Home> {
     var title = "Home Page";
     // final dummyList = List.generate(4, (index) => CatalogModel.item[0]);
     return Scaffold(
-        backgroundColor: MyThemes.creamColor,
+        backgroundColor: Theme.of(context).canvasColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
           child: Icon(CupertinoIcons.cart),
-          backgroundColor: MyThemes.darkBlueishColor,
+          backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         body: SafeArea(
           bottom: false,
@@ -78,7 +77,12 @@ class CatalogHeader extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        "Catalog App".text.color(MyThemes.darkBlueishColor).bold.xl5.make(),
+        "Catalog App"
+            .text
+            .color(Theme.of(context).colorScheme.onSecondary)
+            .bold
+            .xl5
+            .make(),
         "Trending Products".text.xl2.make(),
       ],
     );
@@ -126,7 +130,10 @@ class CatalogItem extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            catalog.name.text.xl.color(MyThemes.darkBlueishColor).bold.make(),
+            catalog.name.text.xl
+                .color(Theme.of(context).colorScheme.secondary)
+                .bold
+                .make(),
             catalog.desc.text.sm.gray500.make(),
             10.heightBox,
             ButtonBar(
@@ -140,8 +147,8 @@ class CatalogItem extends StatelessWidget {
                   },
                   child: "Add to cart".text.make(),
                   style: ButtonStyle(
-                      backgroundColor:
-                          MaterialStateProperty.all(MyThemes.darkBlueishColor),
+                      backgroundColor: MaterialStateProperty.all(
+                          Theme.of(context).colorScheme.secondary),
                       shape: MaterialStateProperty.all(StadiumBorder())),
                 )
               ],
@@ -149,7 +156,7 @@ class CatalogItem extends StatelessWidget {
           ],
         ))
       ],
-    )).white.rounded.square(150).make().py16();
+    )).color(Theme.of(context).cardColor).rounded.square(150).make().py16();
   }
 }
 
@@ -164,7 +171,7 @@ class CatalogItemImage extends StatelessWidget {
         .box
         .roundedLg
         .p8
-        .color(MyThemes.creamColor)
+        .color(Theme.of(context).canvasColor)
         .make()
         .p16()
         .w40(context);
