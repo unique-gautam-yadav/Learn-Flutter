@@ -45,7 +45,10 @@ class _HomeState extends State<Home> {
         backgroundColor: Theme.of(context).canvasColor,
         floatingActionButton: FloatingActionButton(
           onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          child: Icon(CupertinoIcons.cart),
+          child: Icon(
+            CupertinoIcons.cart,
+            color: Colors.white,
+          ),
           backgroundColor: Theme.of(context).colorScheme.secondary,
         ),
         body: SafeArea(
