@@ -14,7 +14,6 @@ class Item_Wid extends StatelessWidget {
       elevation: 1.9,
       child: ListTile(
         onTap: () {
-          print("${item.name} Pressed !!");
         },
         leading: Image.network(item.image),
         title: Text(item.name),

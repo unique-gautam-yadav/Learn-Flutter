@@ -2,13 +2,15 @@ import 'package:first_app/Pages/Home.dart';
 import 'package:first_app/Pages/Login.dart';
 import 'package:first_app/Pages/Profile.dart';
 import 'package:first_app/Pages/cart_page.dart';
+import 'package:first_app/core/store.dart';
 import 'package:first_app/utils/MyThemes.dart';
+import 'package:velocity_x/velocity_x.dart';
 import 'Pages/Login2.dart';
 import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const App());
+  runApp(VxState(store: MyStore(), child: const App()));
 }
 
 class App extends StatelessWidget {
