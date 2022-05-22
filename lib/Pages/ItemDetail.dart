@@ -1,11 +1,8 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
 import 'package:first_app/Widgets/Add_To_Cart.dart';
 import 'package:first_app/models/CatalogModel.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
-
-import '../models/cart.dart';
 
 class ItemDetail extends StatelessWidget {
   const ItemDetail({Key? key, required this.catalog}) : super(key: key);
