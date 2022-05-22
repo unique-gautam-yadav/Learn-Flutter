@@ -5,6 +5,7 @@
 import 'dart:convert';
 
 import 'package:first_app/Pages/ItemDetail.dart';
+import 'package:first_app/models/cart.dart';
 import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -144,22 +145,47 @@ class CatalogItem extends StatelessWidget {
               alignment: MainAxisAlignment.spaceBetween,
               children: [
                 "\$${catalog.price}".text.bold.xl.make(),
-                ElevatedButton(
-                  onPressed: () {
-                    print("${catalog.name} Pressed !!");
-                  },
-                  child: "Add to cart".text.make(),
-                  style: ButtonStyle(
-                      backgroundColor: MaterialStateProperty.all(
-                          Theme.of(context).colorScheme.secondary),
-                      shape: MaterialStateProperty.all(StadiumBorder())),
-                )
+                _AddBtn(catalog: catalog)
               ],
             ).pOnly(right: 8.0)
           ],
         ))
       ],
     )).color(Theme.of(context).cardColor).rounded.square(150).make().py16();
+  }
+}
+
+class _AddBtn extends StatefulWidget {
+  const _AddBtn({
+    Key? key,
+    required this.catalog,
+  }) : super(key: key);
+
+  final Item catalog;
+
+  @override
+  State<_AddBtn> createState() => _AddBtnState();
+}
+
+class _AddBtnState extends State<_AddBtn> {
+  bool isAdded = false;
+  @override
+  Widget build(BuildContext context) {
+    return ElevatedButton(
+      onPressed: () {
+        isAdded = isAdded.toggle();
+        final _cart = CartModel();
+        final _catalog = CatalogModel();
+        _cart.catalog = _catalog;
+        _cart.add(widget.catalog);
+        setState(() {});
+      },
+      child: isAdded ? Icon(Icons.done) : "Add to cart".text.make(),
+      style: ButtonStyle(
+          backgroundColor: MaterialStateProperty.all(
+              Theme.of(context).colorScheme.secondary),
+          shape: MaterialStateProperty.all(StadiumBorder())),
+    );
   }
 }
 

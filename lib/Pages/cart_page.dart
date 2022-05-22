@@ -1,3 +1,4 @@
+import 'package:first_app/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
 
@@ -24,12 +25,13 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return SizedBox(
       height: 100,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: [
-          "\$9999".text.xl5.make(),
+          "\$${_cart.totalPrice}".text.xl5.make(),
           ElevatedButton(
             onPressed: () {
               ScaffoldMessenger.of(context).showSnackBar(const SnackBar(
@@ -53,13 +55,14 @@ class _CartList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final _cart = CartModel();
     return Padding(
       padding: EdgeInsets.zero,
       child: ListView.builder(
-        itemCount: 5,
+        itemCount: _cart.items.length,
         itemBuilder: (context, index) => ListTile(
           leading: const Icon(Icons.done),
-          title: const Text("Item"),
+          title: Text(_cart.items[index].name),
           trailing: IconButton(
               onPressed: () {}, icon: const Icon(Icons.remove_circle_outline)),
         ),

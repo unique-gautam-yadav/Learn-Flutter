@@ -37,6 +37,10 @@ class Item {
 
 // Get By ID
 class CatalogModel {
+  static final catalog = CatalogModel._internal();
+  CatalogModel._internal();
+  factory CatalogModel() => catalog;
+
   static List<Item> item = [];
 
 //Get By ID
