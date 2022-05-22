@@ -1,7 +1,11 @@
 // ignore_for_file: public_member_api_docs, sort_constructors_first, avoid_print
+import 'package:first_app/Widgets/Add_To_Cart.dart';
 import 'package:first_app/models/CatalogModel.dart';
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
+
+import '../models/cart.dart';
 
 class ItemDetail extends StatelessWidget {
   const ItemDetail({Key? key, required this.catalog}) : super(key: key);
@@ -23,16 +27,7 @@ class ItemDetail extends StatelessWidget {
           alignment: MainAxisAlignment.spaceBetween,
           children: [
             "\$${catalog.price}".text.red800.bold.xl3.make(),
-            ElevatedButton(
-              onPressed: () {
-                print("${catalog.name} Pressed !!");
-              },
-              child: "Add to cart".text.xl2.bold.make(),
-              style: ButtonStyle(
-                  backgroundColor: MaterialStateProperty.all(
-                      Theme.of(context).colorScheme.secondary),
-                  shape: MaterialStateProperty.all(const StadiumBorder())),
-            ),
+            AddToCart(catalog: catalog),
           ],
         ).px32().py8(),
       ),

@@ -50,23 +50,35 @@ class _CartTotal extends StatelessWidget {
   }
 }
 
-class _CartList extends StatelessWidget {
+class _CartList extends StatefulWidget {
   const _CartList({Key? key}) : super(key: key);
 
+  @override
+  State<_CartList> createState() => _CartListState();
+}
+
+class _CartListState extends State<_CartList> {
+  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
     final _cart = CartModel();
     return Padding(
       padding: EdgeInsets.zero,
-      child: ListView.builder(
-        itemCount: _cart.items.length,
-        itemBuilder: (context, index) => ListTile(
-          leading: const Icon(Icons.done),
-          title: Text(_cart.items[index].name),
-          trailing: IconButton(
-              onPressed: () {}, icon: const Icon(Icons.remove_circle_outline)),
-        ),
-      ),
+      child: _cart.items.isEmpty
+          ? "Cart is Empty".text.xl3.makeCentered()
+          : ListView.builder(
+              itemCount: _cart.items.length,
+              itemBuilder: (context, index) => ListTile(
+                leading: const Icon(Icons.done),
+                title: Text(_cart.items[index].name),
+                trailing: IconButton(
+                    onPressed: () {
+                      _cart.remove(_cart.items[index]);
+                      setState(() {});
+                    },
+                    icon: const Icon(Icons.remove_circle_outline)),
+              ),
+            ),
     );
   }
 }
