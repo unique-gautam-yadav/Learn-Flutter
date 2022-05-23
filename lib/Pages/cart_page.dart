@@ -1,3 +1,4 @@
+import 'package:first_app/core/store.dart';
 import 'package:first_app/models/cart.dart';
 import 'package:flutter/material.dart';
 import 'package:velocity_x/velocity_x.dart';
@@ -25,7 +26,7 @@ class _CartTotal extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return SizedBox(
       height: 100,
       child: Row(
@@ -51,12 +52,11 @@ class _CartTotal extends StatelessWidget {
 }
 
 class _CartList extends StatelessWidget {
-  _CartList({Key? key}) : super(key: key);
+  const _CartList({Key? key}) : super(key: key);
 
-  final _cart = CartModel();
   @override
   Widget build(BuildContext context) {
-    final _cart = CartModel();
+    final CartModel _cart = (VxState.store as MyStore).cart;
     return Padding(
       padding: EdgeInsets.zero,
       child: _cart.items.isEmpty
