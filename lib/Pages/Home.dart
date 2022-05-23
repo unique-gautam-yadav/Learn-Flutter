@@ -6,6 +6,8 @@ import 'dart:convert';
 
 import 'package:first_app/Pages/ItemDetail.dart';
 import 'package:first_app/Widgets/Add_To_Cart.dart';
+import 'package:first_app/core/store.dart';
+import 'package:first_app/models/cart.dart';
 import 'package:first_app/utils/MyRoutes.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
@@ -40,18 +42,45 @@ class _HomeState extends State<Home> {
 
   @override
   Widget build(BuildContext context) {
+    final CartModel _cart = (VxState.store as MyStore).cart;
     var title = "Home Page";
     // final dummyList = List.generate(4, (index) => CatalogModel.item[0]);
     return Scaffold(
         backgroundColor: Theme.of(context).canvasColor,
-        floatingActionButton: FloatingActionButton(
-          onPressed: () => Navigator.pushNamed(context, MyRoutes.cartRoute),
-          child: Icon(
-            CupertinoIcons.cart,
-            color: Colors.white,
-          ),
-          backgroundColor: Theme.of(context).colorScheme.secondary,
-        ),
+        floatingActionButton: VxConsumer(
+            builder: ((context, store, status) {
+              return _cart.items.isEmpty
+                  ? FloatingActionButton(
+                      onPressed: () =>
+                          Navigator.pushNamed(context, MyRoutes.cartRoute),
+                      child: const Icon(
+                        CupertinoIcons.cart,
+                        color: Colors.white,
+                      ),
+                      backgroundColor: Theme.of(context).colorScheme.secondary,
+                    )
+                  : VxBadge(
+                      textStyle: const TextStyle(
+                          fontWeight: FontWeight.bold,
+                          color: Colors.white,
+                          fontSize: 15),
+                      color: Colors.red,
+                      count: _cart.items.length,
+                      size: 25,
+                      child: FloatingActionButton(
+                        onPressed: () =>
+                            Navigator.pushNamed(context, MyRoutes.cartRoute),
+                        child: const Icon(
+                          CupertinoIcons.cart,
+                          color: Colors.white,
+                        ),
+                        backgroundColor:
+                            Theme.of(context).colorScheme.secondary,
+                      ),
+                    );
+            }),
+            mutations: const {AddMutation, RemoveMutation},
+            notifications: const {}),
         body: SafeArea(
           bottom: false,
           child: Container(

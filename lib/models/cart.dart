@@ -42,3 +42,13 @@ class AddMutation extends VxMutation<MyStore> {
     store?.cart.add(item);
   }
 }
+
+class RemoveMutation extends VxMutation {
+  final Item item;
+  RemoveMutation(this.item);
+
+  @override
+  perform() {
+    (VxState.store as MyStore).cart.remove(item);
+  }
+}
